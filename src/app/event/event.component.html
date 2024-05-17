@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Form</title>
+</head>
+<body>
+
+  <div class="container">
+    <div>
+      <h2>Add Event</h2>
+      <form (ngSubmit)="addEvent(formData)" #addEventForm="ngForm">
+        <label for="idEvent">ID:</label>
+        <input type="number" id="idEvent" name="idEvent" [(ngModel)]="formData.idEvent" required>
+
+        <label for="dateDebut">Start Date:</label>
+        <input type="text" id="dateDebut" name="dateDebut" [(ngModel)]="formData.dateDebut" required>
+
+        <label for="dateFin">End Date:</label>
+        <input type="text" id="dateFin" name="dateFin" [(ngModel)]="formData.dateFin" required>
+
+        <label for="lieuEvent">Location:</label>
+        <input type="text" id="lieuEvent" name="lieuEvent" [(ngModel)]="formData.lieuEvent" required>
+
+        <button type="submit">Add Event</button>
+      </form>
+    </div>
+
+    <div>
+      <h2>Get Event</h2>
+      <label for="getEventId">Event ID:</label>
+      <input type="number" id="getEventId" name="getEventId" [(ngModel)]="getEventId" required>
+    
+      <button (click)="getEvent()">Get Event</button>
+    
+      <div *ngIf="retrievedEvent">
+        <h3>Retrieved Event:</h3>
+        <table>
+          <tr>
+            <th>ID</th>
+            <th>Date Début</th>
+            <th>Date Fin</th>
+            <th>Lieu</th>
+          </tr>
+          <tr>
+            <td>{{ retrievedEvent.idEvent }}</td>
+            <td>{{ retrievedEvent.dateDebut | date: 'medium' }}</td>
+            <td>{{ retrievedEvent.dateFin | date: 'medium' }}</td>
+            <td>{{ retrievedEvent.lieuEvent }}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    
+
+    <div>
+      <h2>Update Event</h2>
+      <form (ngSubmit)="updateEvent()" #updateEventForm="ngForm">
+        <label for="idEvent">ID:</label>
+        <input type="number" id="idEvent" name="idEvent" [(ngModel)]="formData.idEvent" required>
+
+        <label for="dateDebut">Start Date:</label>
+        <input type="text" id="dateDebut" name="dateDebut" [(ngModel)]="formData.dateDebut" required>
+
+        <label for="dateFin">End Date:</label>
+        <input type="text" id="dateFin" name="dateFin" [(ngModel)]="formData.dateFin" required>
+
+        <label for="lieuEvent">Location:</label>
+        <input type="text" id="lieuEvent" name="lieuEvent" [(ngModel)]="formData.lieuEvent" required>
+
+        <button type="submit">Update Event</button>
+      </form>
+
+      
+    </div>
+
+    <div>
+      <h2>Delete Event</h2>
+      <label for="deleteEventId">Event ID:</label>
+      <input type="number" id="deleteEventId" name="deleteEventId" [(ngModel)]="deleteEventId" required>
+
+      <button (click)="deleteEvent()">Delete Event</button>
+    </div>
+  </div>
+
+  <router-outlet></router-outlet>
+</body>
+</html>

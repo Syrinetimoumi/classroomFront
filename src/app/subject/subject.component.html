@@ -1,0 +1,38 @@
+<body>
+    <!-- subject.component.html -->
+
+<div class="container">
+    <h2>Add Subject</h2>
+    <form (ngSubmit)="addSubject()" #addSubjectForm="ngForm">
+      <label for="subjectTitle">Subject Title:</label>
+      <input type="text" id="subjectTitle" name="subjectTitle" [(ngModel)]="subjectData.title" required>
+  
+
+  
+      <button type="submit">Add Subject</button>
+    </form>
+  
+    <h2>Affect Subject to Class</h2>
+    <form (ngSubmit)="affectSubjectClass()" #affectSubjectClassForm="ngForm">
+      <label for="subjectId">Subject ID:</label>
+      <input type="number" id="subjectId" name="subjectId" [(ngModel)]="subjectData.idSubject" required>
+  
+      <label for="classId">Class ID:</label>
+      <input type="number" id="classId" name="classId" [(ngModel)]="idClass" required>
+  
+      <button type="submit">Affect Subject to Class</button>
+    </form>
+    <h2>Update Subject</h2>
+    <form (ngSubmit)="updateSubject()" #updateSubjectForm="ngForm">
+      <label for="idSubject">Subject ID:</label>
+      <input type="number" id="idSubject" name="idSubject" [(ngModel)]="subjectData.idSubject" required>
+  
+      <label for="title">Title:</label>
+      <input type="text" id="title" name="title" [(ngModel)]="subjectData.title" required>
+  
+
+  
+      <button type="submit">Update Subject</button>
+    </form>
+  </div>
+  

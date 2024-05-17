@@ -1,0 +1,27 @@
+<body>
+  <div class="container">
+    <h2>Get Event</h2>
+    <label for="getEventId">Event ID:</label>
+    <input type="number" id="getEventId" name="getEventId" [(ngModel)]="getEventId" required>
+    <button (click)="getEvent()">Get Event</button>
+  
+    <div *ngIf="retrievedEvent">
+      <h3>Retrieved Event:</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Property</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of retrievedEvent | keyvalue">
+            <td>{{ item.key }}</td>
+            <td>{{ item.value }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+</body>

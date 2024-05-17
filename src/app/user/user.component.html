@@ -1,0 +1,135 @@
+<body>
+  <!-- user.component.html -->
+
+<div class="container">
+  <h2>User Actions</h2>
+
+ 
+
+  <div class="container">
+    <h2>Get Users By Role</h2>
+    <label for="role">Role:</label>
+<input type="text" id="role" name="role" [(ngModel)]="role" required>
+<button (click)="getUsersByRole()">Get Users</button>
+  
+    <div *ngIf="users && users.length > 0">
+      <h3>Users:</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Email</th>
+            
+            <!-- Add other properties as needed -->
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users">
+            <td>{{ user.id }}</td>
+            <td>{{ user.firstname }}</td>
+            <td>{{ user.lastname }}</td>
+            <td>{{ user.email }}</td>
+            
+           
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div>
+
+<br>
+
+<div class="container">
+
+  <h2>Add Note to User</h2>
+  <label for="userId">User ID:</label>
+  <input type="number" id="userId" [(ngModel)]="userId" required>
+
+  <label for="subjectId">Subject ID:</label>
+  <input type="number" id="subjectId" [(ngModel)]="subjectId" required>
+
+  <label for="noteValue">Note Value:</label>
+  <input type="number" id="noteValue" [(ngModel)]="noteValue" required>
+
+  <button (click)="addNote()">Add Note</button>
+</div>
+
+
+    <h2>Users by Role and Class ID</h2>
+    <label for="role">Role: </label>
+    <input type="text" id="role" [(ngModel)]="role" />
+    <br />
+    <label for="classId">Class ID: </label>
+    <input type="number" id="classId" [(ngModel)]="classId" />
+    <button (click)="getUsersByClassRole(role, classId)">Filter Users</button>
+  
+    <div *ngIf="users.length > 0; else noUsers">
+      <h3>Filtered Users:</h3>
+      <ul>
+        <li *ngFor="let user of users">
+          {{ user }}
+        </li>
+      </ul>
+    </div>
+    <ng-template #noUsers>
+      <p>No users found for the specified role and class ID.</p>
+    </ng-template>
+  </div>
+  
+ 
+  <br>
+
+  <div class="container">
+    <h3>Display User</h3>
+    <label for="userIdDisplay">User ID:</label>
+    <input type="number" id="userIdDisplay" name="userIdDisplay" [(ngModel)]="userId" required>
+  
+    <button (click)="displayUser()">Display User</button>
+  </div>
+  
+  <div *ngIf="user">
+    <h3>User Details:</h3>
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <!-- Add more headers for other attributes -->
+      </tr>
+      <tr>
+        <td>{{ user.id }}</td>
+        <td>{{ user.firstname }}</td>
+        <td>{{ user.lastname }}</td>
+        <td>{{ user.email }}</td>
+        <!-- Add more cells for other attributes -->
+      </tr>
+    </table>
+  </div>
+  
+  <br>
+  <div class="container">
+    <h3>Affect User to Class</h3>
+    <label for="userIdClass">User ID:</label>
+    <input type="number" id="userIdClass" name="userIdClass" [(ngModel)]="userId" required>
+
+    <label for="classId">Class ID:</label>
+    <input type="number" id="classId" name="classId" [(ngModel)]="classId" required>
+
+    <button (click)="affectUtilisateurClasse()">Affect User to Class</button>
+  </div>
+  <br>
+  <div class="container">
+    <h3>Affect User to Subject</h3>
+    <label for="userIdSubject">User ID:</label>
+    <input type="number" id="userIdSubject" name="userIdSubject" [(ngModel)]="userId" required>
+
+    <label for="subjectId">Subject ID:</label>
+    <input type="number" id="subjectId" name="subjectId" [(ngModel)]="subjectId" required>
+
+    <button (click)="affectUtilisateurSubject()">Affect User to Subject</button>
+  </div>
+</div>

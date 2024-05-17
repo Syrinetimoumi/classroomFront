@@ -1,0 +1,75 @@
+
+<body>
+<div class="container">
+    <div>
+      <h2>Add Class</h2>
+      <form (ngSubmit)="addClass(formData)" #addClassForm="ngForm">
+        <label for="idClass">ID:</label>
+        <input type="number" id="idClass" name="idClass" [(ngModel)]="formData.idClass" required>
+  
+        <label for="nbMax">Max Students:</label>
+        <input type="number" id="nbMax" name="nbMax" [(ngModel)]="formData.nbMax" required>
+  
+        <label for="level">Level:</label>
+        <input type="text" id="level" name="level" [(ngModel)]="formData.level" required>
+  
+        <button type="submit">Add Class</button>
+      </form>
+    </div>
+  
+    <div>
+      <h2>Get Class</h2>
+      <label for="getClassId">Class ID:</label>
+      <input type="number" id="getClassId" name="getClassId" [(ngModel)]="getClassId" required>
+    
+      <button (click)="getClass()">Get Class</button>
+    
+      <div *ngIf="retrievedClass$ | async as retrievedClass">
+        <h3>Retrieved Class:</h3>
+        
+        <table border="1">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Max Students</th>
+              <th>Level</th>
+              <!-- Add more table headers based on your SchoolClass properties -->
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{ retrievedClass.idClass }}</td>
+              <td>{{ retrievedClass.nbMax }}</td>
+              <td>{{ retrievedClass.level }}</td>
+              <!-- Add more table cells based on your SchoolClass properties -->
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    
+  
+    <div>
+        <h2>Update Class</h2>
+        <form (ngSubmit)="updateClass()" #updateClassForm="ngForm">
+          <label for="idClass">ID:</label>
+          <input type="number" id="idClass" name="idClass" [(ngModel)]="formData.idClass" required>
+    
+          <label for="nbMax">Max Students:</label>
+          <input type="number" id="nbMax" name="nbMax" [(ngModel)]="formData.nbMax" required>
+    
+          <label for="level">Level:</label>
+          <input type="text" id="level" name="level" [(ngModel)]="formData.level" required>
+    
+          <button type="submit">Update Class</button>
+        </form>
+      </div>
+    <div>
+      <h2>Delete Class</h2>
+      <label for="deleteClassId">Class ID:</label>
+      <input type="number" id="deleteClassId" name="deleteClassId" [(ngModel)]="deleteClassId" required>
+  
+      <button (click)="deleteClass()">Delete Class</button>
+    </div>
+  </div>
+</body>

@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Form</title>
+
+</head>
+<nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
+  <a class="navbar-brand logo-container" href="#">
+    <img src="assets/images/394019026_262490696850008_273273111956641034_n.png" alt="Logo">
+  </a>
+  <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarCollapse">
+    <div class="navbar-nav me-auto p-4 p-lg-0">
+      <a routerLink="/notesaffich" class="nav-item nav-link active">Notes</a>
+      <a routerLink="/useraffich" class="nav-item nav-link">Events</a>
+      <a routerLink="/courseaffich" class="nav-item nav-link">Classes</a>
+      <a routerLink="/subjectaffich" class="nav-item nav-link">Courses</a>
+    </div>
+    <button routerLink="" class="button">Deconnect<i class="fa fa-arrow-right ms-3"></i></button>
+  </div>
+</nav>
+
+<body>
+
+  <div class="container">
+    
+        <h2>Admin Panel</h2>
+        <br><br>
+        <label for="modelSelect">Choose a Model:</label><br>
+        <select id="modelSelect" [(ngModel)]="selectedModel" (change)="onModelChange()">
+          <option value="event">Event</option>
+          <option value="class">Class</option>
+          <option value="subject">Subject</option>
+          <option value="user">User</option>
+        </select>
+        <br><br>
+        
+        <button (click)="performAction()">Perform Action</button>
+      </div>
+     
+<router-outlet  ></router-outlet>
+</body>
+</html>
+
